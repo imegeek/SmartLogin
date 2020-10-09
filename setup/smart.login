@@ -200,10 +200,10 @@ echo -e "\n"
 main() {
 printf "Enter Username for Login : "
 read user
-if [[ $user = "123" ]];then
+if [[ $user = "111" ]];then
 printf "Enter Password for Login : "
 getPassword
-if [[ $pass = "123" ]];then
+if [[ $pass = "1111" ]];then
 progress
 printf "${GREEN}"
 access_granted ; printf "${RESET}"
