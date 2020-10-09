@@ -20,7 +20,9 @@ echo "Please Enter Password within 8 Digits."
 exit 0
 fi
 
-cd - &> /dev/null
+if [ -f "/data/data/com.termux/files/usr/bin/recent.setup" ];then
+cd - &> /dev/null ;fi
+
 cd setup
 cp setup.config smart.login
 echo "Login was  Successfully completed, Open New Session."
