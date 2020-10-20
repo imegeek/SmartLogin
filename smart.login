@@ -6,19 +6,30 @@ chmod +x recent.setup
 source /data/data/com.termux/files/usr/bin/recent.setup;fi
 
 printf "Setup a New Login Authentication :
+Minimum Password & Username : 3 Digits
 Maximum Password & Username : 8 Digits\n\n"
 printf "Enter a New Username : "
 read username
 if [ ${#username} -gt 8 ]; then
 echo "Please Enter Username within 8 Digits."
 exit 0
+
+elif [ ${#username} -lt 3 ]; then
+echo "Please Enter Username within 3 Digits."
+exit 0
 fi
+
 printf "Enter a New Password : "
 read password
 if [ ${#password} -gt 8 ]; then
 echo "Please Enter Password within 8 Digits."
 exit 0
+
+elif [ ${#password} -lt 3 ]; then
+echo "Please Enter Password within 3 Digits."
+exit 0
 fi
+
 
 if [ -f "/data/data/com.termux/files/usr/bin/recent.setup" ];then
 cd - &> /dev/null ;fi
@@ -156,6 +167,10 @@ echo "}" >> recent.setup
 
 echo 'printf "Enter Recently Password for New-Setup: "' >> recent.setup
 echo "getPassword" >> recent.setup
+echo 'if [ ${#pass} -lt 1 ]; then' >> recent.setup
+echo 'echo -e "\nYou not entered any Input."' >> recent.setup
+echo "exit 0" >> recent.setup
+echo "fi" >> recent.setup
 echo 'if [[ $pass = "'$password'" ]];then' >> recent.setup
 echo 'echo -e "\nPassword was Successfully Matched, Now you can Make New-Setup\n"' >> recent.setup
 echo "else" >> recent.setup
